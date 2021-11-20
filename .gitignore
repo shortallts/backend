@@ -1,1 +1,5 @@
 node_modules/
+error.log
+errors.log
+exceptions.log
+combined.log

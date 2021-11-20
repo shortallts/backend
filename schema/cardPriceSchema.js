@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const cardPriceSchema = new mongoose.Schema({
+const cardPrice = mongoose.model('cardPrice', new mongoose.Schema({
     cardmarket_price: {
         type: String,
     },
@@ -17,9 +17,9 @@ const cardPriceSchema = new mongoose.Schema({
     coolstuffinc_price: {
         type: String,
     },
-})
+}));
 
-function validateCardPriceSchema(cardPrice){
+function validateCardPrice(cardPrice){
     const schema = {
         cardmarket_price: Joi.string(),
         tcgplayer_price: Joi.string(),
@@ -29,5 +29,5 @@ function validateCardPriceSchema(cardPrice){
     } 
     return Joi.validate(cardPrice, schema);
 }
-exports.cardPriceSchema = cardPriceSchema;
-exports.validate = validateCardPriceSchema;
+exports.cardPrice = cardPrice;
+exports.validate = validateCardPrice;

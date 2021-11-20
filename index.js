@@ -1,11 +1,12 @@
 const winston = require('winston');
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
+const config = require('config');
 const app = express();
-
 app.use(cors({origin: "*"}))
 
-//require('./startup/logging')();
+
+require('./startup/logging');
 require('./startup/routes')(app);
 require('./startup/db')();
 require('./startup/config')();

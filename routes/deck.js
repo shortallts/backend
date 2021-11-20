@@ -1,11 +1,11 @@
 const validateObjectId = require('../middleware/validateObjectId');
-const {deck, validate} = require('../schema/deckSchema');
+const {Deck, validate} = require('../schema/deckSchema');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
 router.get('/api/decks', async (req, res) =>{
-    results = await Deck.find();
+    const results = await Deck.find();
     res.send(results);
 });
 
@@ -45,3 +45,5 @@ router.post('/api/decks', async (req, res) =>{
     deck = await deck.save();
     res.send(deck);       
 });
+
+module.exports = router; 
