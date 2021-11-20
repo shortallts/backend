@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const cardImageSchema = require('cardImageSchema')
+const {cardImageSchema} = require('cardImageSchema')
 
 const cardSetSchema = new mongoose.Schema({
     set_name: {
@@ -40,5 +40,5 @@ function validateCardSetSchema(cardSet){
     }
     return Joi.validate(cardSet, schema);
 }
-exports.cardPriceSchema = cardPriceSchema;
+exports.cardSetSchema = cardSetSchema;
 exports.validate = validateCardSetSchema;

@@ -1,8 +1,9 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const cardSetSchema = require('./cardSetSchema')
-const cardPriceSchema = require('./cardPriceSchema')
-const cardImageSchema = require('./cardImageSchema')
+const {cardSetSchema} = require('./cardSetSchema')
+const {cardPriceSchema} = require('./cardPriceSchema')
+const {cardImageSchema} = require('./cardImageSchema')
+const {cardBanlistSchema} = require('./cardBanlistSchema')
 
 const cardSchema = new mongoose.Schema({
     id: {

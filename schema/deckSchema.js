@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const cardSchema = require('./cardSchema')
+const {cardSchema} = require('./cardSchema')
+
 const deckSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -35,5 +36,5 @@ function validateDeckSchema(deck){
 
     return Joi.validate(deck, schema);
 }
-exports.Customer = Customer; 
-exports.validate = validateCustomer;
+exports.deckSchema = deckSchema; 
+exports.validate = validateDeckSchema;
