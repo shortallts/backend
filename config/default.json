@@ -1,4 +1,4 @@
 {
     "jwtPrivateKey": "",
-    "db": "mongodb://localhost/decks"
+    "db": "mongodb+srv://shortallts:sathanas12as@cluster0.il7pj.mongodb.net/Card-Database?retryWrites=true&w=majority"
   }
