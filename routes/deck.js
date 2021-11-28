@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-router.get('/api/decks', async (req, res) =>{
+router.get('/', async (req, res) =>{
     const results = await Deck.find();
     res.send(results);
 });
 
-router.get('/api/decks/:id', validateObjectId, async (req , res) =>{
-    const deck = await getDeckById(req.params.id);
+router.get('/:id', validateObjectId, async (req , res) =>{
+    const deck = await Deck.findById(req.params.id);
     if(!deck) return res.status(404).send("No deck found with that ID");
     res.send(deck);
 });
@@ -26,22 +26,21 @@ router.get('/api/decks/:id', validateObjectId, async (req , res) =>{
 //     res.send(deck)
 // });
 
-router.delete('/api/decks/:id', validateObjectId, (req, res) =>{
-    const deck = Decks.findByIdAndRemove(req.params.id);
+router.delete('/:id', validateObjectId, async (req, res) =>{
+    const deck = await Deck.findByIdAndRemove(req.params.id);
     if(!deck) return res.status(404).send("No deck found with that ID");
-    Decks.splice(index, 1);
     res.send(deck)
 });
 
-router.post('/api/decks', async (req, res) =>{
-    const { error } = validate(req.body.name);
-    if(error) return res.status(400).send(result.error.details[0].message);
+router.post('/', async (req, res) =>{
+    const { error } = validate(req.body);
+    if(error) return res.status(400).send(error.details);
     let deck = new Deck({
         name: req.body.name,
-        mainDeck: req.body.MainDeck,
-        sideDeck: req.body.SideDeck,
-        extraDeck: req.body.ExtraDeck
-            });
+        mainDeck: req.body.mainDeck,
+        sideDeck: req.body.sideDeck,
+        extraDeck: req.body.extraDeck
+        });
     deck = await deck.save();
     res.send(deck);       
 });

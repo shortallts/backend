@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const cardPrice = mongoose.model('cardPrice', new mongoose.Schema({
+const cardPrice = mongoose.Schema({
     cardmarket_price: {
         type: String,
     },
@@ -17,7 +17,7 @@ const cardPrice = mongoose.model('cardPrice', new mongoose.Schema({
     coolstuffinc_price: {
         type: String,
     },
-}));
+});
 
 function validateCardPrice(cardPrice){
     const schema = {

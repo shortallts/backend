@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const cardImage = mongoose.model('cardImage', new mongoose.Schema({
+const cardImage = mongoose.Schema({
     id: {
         type: Number,
         required: true
@@ -14,7 +14,7 @@ const cardImage = mongoose.model('cardImage', new mongoose.Schema({
         type: String,
         required: true
     },
-}));
+});
 
 function validateCardImage(cardImage){
     const schema ={

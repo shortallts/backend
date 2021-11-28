@@ -1,11 +1,11 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const {cardSet} = require('./cardSetSchema')
-const {cardPrice} = require('./cardPriceSchema')
-const {cardImage} = require('./cardImageSchema')
-const {cardBanlist} = require('./cardBanlistSchema')
+const {cardSet} = require('./cardSetSchema');
+const {cardPrice} = require('./cardPriceSchema');
+const {cardImage} = require('./cardImageSchema');
+const {cardBanlist} = require('./cardBanlistSchema');
 
-const Card = mongoose.model('Card', new mongoose.Schema({
+const Card = mongoose.Schema({
     id: {
         type: Number,
         required: true
@@ -53,10 +53,10 @@ const Card = mongoose.model('Card', new mongoose.Schema({
         type: [cardPrice],
         required: true
     },
-}));
+});
 
 function validateCard(card){
-    const schema={
+    const schema= Joi.object({
         id: Joi.number().required(),
         name: Joi.String().required(),
         type: Joi.String().required(),
@@ -70,7 +70,7 @@ function validateCard(card){
         card_sets: Joi.isSchema(cardSet),
         card_images: Joi.isSchema(cardImage),
         card_prices: Joi.isSchema(cardPrice),
-    }
+    })
     return Joi.validate(card, schema);
 }
 

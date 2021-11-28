@@ -1,14 +1,14 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const cardBanlist = mongoose.model('cardBanlist', new mongoose.Schema({
+const cardBanlist = mongoose.Schema({
     ban_ocg: {
         type: String,
     },
     ban_tcg: {
         type: String,
     }
-}));
+});
 
 function validateCardBanlist(cardBanlist){
     const schema = {
